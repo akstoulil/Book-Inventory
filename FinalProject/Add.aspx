@@ -45,7 +45,7 @@
             <div class="col-md-12">
                 <b><asp:Label ID="lblTitle" runat="server" Text="Title: "></asp:Label></b>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                ControlToValidate="textTitle" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textTitle" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>        
             <div class="col-md-12">
                 <asp:TextBox ID="textTitle" runat="server" CssClass="form-control"></asp:TextBox>            
@@ -56,7 +56,7 @@
             <div class="col-md-12">
                 <b><asp:Label ID="lblFirstName" runat="server" Text="Author's First Name: "></asp:Label></b>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                                ControlToValidate="textFirstName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textFirstName" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
                 <asp:TextBox ID="textFirstName" runat="server" CssClass="form-control"></asp:TextBox>
@@ -67,7 +67,7 @@
             <div class="col-md-12">
                 <b><asp:Label ID="lblLastName" runat="server" Text="Author's Last Name: "></asp:Label></b>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                                ControlToValidate="textLastName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textLastName" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
                 <asp:TextBox ID="textLastName" runat="server" CssClass="form-control"></asp:TextBox>
@@ -130,10 +130,20 @@
                 <div class="col-md-12">
                     <b><asp:Label ID="lblIsbn" runat="server" Text="ISBN: "></asp:Label></b>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-                                ControlToValidate="textIsbn" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textIsbn" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-md-12">
                     <asp:TextBox ID="textIsbn" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <b><asp:Label style="text-decoration: underline;" ID="lbl_format" runat="server" Text="Book Format:"></asp:Label></b>
+                    <asp:RadioButtonList ID="rblst_format" runat="server">
+                        <asp:ListItem Selected="True">Paperback</asp:ListItem>
+                        <asp:ListItem>Hardback</asp:ListItem>
+                        <asp:ListItem>Ebook</asp:ListItem>
+                    </asp:RadioButtonList>
                 </div>
             </div>
             <br />
@@ -141,6 +151,14 @@
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click"/>
                 &nbsp;
                 <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-success" OnClick="btnClear_Click" />
+            </div>
+            <br />
+            <div class="col-md-12">
+                <asp:Label style="color: green; font-weight: bold;" ID="lbl_result" runat="server"></asp:Label>
+            </div>
+            <br />
+            <div class="col-md-12">
+                <h4><a href="OptionsMenu.aspx" title="Home">Back to Options</a></h4>
             </div>
             <br />
     </div>

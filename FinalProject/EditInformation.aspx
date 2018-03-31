@@ -44,7 +44,7 @@
             <div class="col-md-12">
                 <b><asp:Label ID="lblEditTitle" runat="server" Text="Title: "></asp:Label></b>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                ControlToValidate="textEditTitle" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textEditTitle" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
                 <asp:TextBox ID="textEditTitle" runat="server" CssClass="form-control"></asp:TextBox>            
@@ -55,7 +55,7 @@
             <div class="col-md-12">
                 <b><asp:Label ID="lblEditFirstName" runat="server" Text="Author's First Name: "></asp:Label></b>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                                ControlToValidate="textEditFirstName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textEditFirstName" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
                 <asp:TextBox ID="textEditFirstName" runat="server" CssClass="form-control"></asp:TextBox>
@@ -66,7 +66,7 @@
             <div class="col-md-12">
                 <b><asp:Label ID="lblEditLastName" runat="server" Text="Author's Last Name: "></asp:Label></b>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                                ControlToValidate="textEditLastName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textEditLastName" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
                 <asp:TextBox ID="textEditLastName" runat="server" CssClass="form-control"></asp:TextBox>
@@ -126,7 +126,7 @@
                 <div class="col-md-12">
                     <b><asp:Label ID="lblEditIsbn" runat="server" Text="ISBN: "></asp:Label></b>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-                                ControlToValidate="textEditIsbn" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                ControlToValidate="textEditIsbn" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-md-12">
                     <asp:TextBox ID="textEditIsbn" runat="server" CssClass="form-control"></asp:TextBox>

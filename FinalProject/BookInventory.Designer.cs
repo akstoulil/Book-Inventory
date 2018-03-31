@@ -1571,7 +1571,135 @@ WHERE        (Isbn = @Isbn)";
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
-        
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertBook(double Isbn, string Title, string AuthorLName, string AuthorFName, double Rating, string Format)
+        {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((double)(Isbn));
+            if ((Title == null))
+            {
+                throw new global::System.ArgumentNullException("Title");
+            }
+            else
+            {
+                command.Parameters[1].Value = ((string)(Title));
+            }
+            if ((AuthorLName == null))
+            {
+                throw new global::System.ArgumentNullException("AuthorLName");
+            }
+            else
+            {
+                command.Parameters[2].Value = ((string)(AuthorLName));
+            }
+            if ((AuthorFName == null))
+            {
+                throw new global::System.ArgumentNullException("AuthorFName");
+            }
+            else
+            {
+                command.Parameters[3].Value = ((string)(AuthorFName));
+            }
+            command.Parameters[4].Value = ((double)(Rating));
+            if ((Format == null))
+            {
+                throw new global::System.ArgumentNullException("Format");
+            }
+            else
+            {
+                command.Parameters[5].Value = ((string)(Format));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try
+            {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertBookCategories(
+                    double Isbn,
+                    bool Fiction,
+                    bool Foreign,
+                    bool Childrens,
+                    bool Romance,
+                    bool Suspense,
+                    bool NonFiction,
+                    bool Comedy,
+                    bool History,
+                    bool SciFi,
+                    bool Textbook,
+                    bool Autobiography,
+                    bool Drama,
+                    bool Horror,
+                    bool SelfHelp,
+                    bool Thriller,
+                    bool Biography,
+                    bool Fantasy,
+                    bool Religious)
+        {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            command.Parameters[0].Value = ((double)(Isbn));
+            command.Parameters[1].Value = ((bool)(Fiction));
+            command.Parameters[2].Value = ((bool)(Foreign));
+            command.Parameters[3].Value = ((bool)(Childrens));
+            command.Parameters[4].Value = ((bool)(Romance));
+            command.Parameters[5].Value = ((bool)(Suspense));
+            command.Parameters[6].Value = ((bool)(NonFiction));
+            command.Parameters[7].Value = ((bool)(Comedy));
+            command.Parameters[8].Value = ((bool)(History));
+            command.Parameters[9].Value = ((bool)(SciFi));
+            command.Parameters[10].Value = ((bool)(Textbook));
+            command.Parameters[11].Value = ((bool)(Autobiography));
+            command.Parameters[12].Value = ((bool)(Drama));
+            command.Parameters[13].Value = ((bool)(Horror));
+            command.Parameters[14].Value = ((bool)(SelfHelp));
+            command.Parameters[15].Value = ((bool)(Thriller));
+            command.Parameters[16].Value = ((bool)(Biography));
+            command.Parameters[17].Value = ((bool)(Fantasy));
+            command.Parameters[18].Value = ((bool)(Religious));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try
+            {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
