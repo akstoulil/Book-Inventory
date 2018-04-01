@@ -48,7 +48,7 @@
                                 ControlToValidate="textTitle" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>        
             <div class="col-md-12">
-                <asp:TextBox ID="textTitle" runat="server" CssClass="form-control"></asp:TextBox>            
+                <asp:TextBox ID="textTitle" runat="server" CssClass="form-control" OnTextChanged="textTitle_TextChanged"></asp:TextBox>            
             </div>
         </div>
         <br />
@@ -59,7 +59,7 @@
                                 ControlToValidate="textFirstName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
-                <asp:TextBox ID="textFirstName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="textFirstName" runat="server" CssClass="form-control" OnTextChanged="textFirstName_TextChanged"></asp:TextBox>
             </div>
         </div>
         <br />
@@ -70,7 +70,7 @@
                                 ControlToValidate="textLastName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
-                <asp:TextBox ID="textLastName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="textLastName" runat="server" CssClass="form-control" OnTextChanged="textLastName_TextChanged"></asp:TextBox>
             </div>
         </div>
         <br />
@@ -133,14 +133,37 @@
                                 ControlToValidate="textIsbn" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-md-12">
-                    <asp:TextBox ID="textIsbn" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="textIsbn" runat="server" CssClass="form-control" OnTextChanged="textIsbn_TextChanged"></asp:TextBox>
                 </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>
+                            <asp:Label Style="text-decoration: underline;" ID="lbl_format" runat="server" Text="Book Format:"></asp:Label></b>
+                        <asp:RadioButtonList ID="rblst_format" runat="server">
+                            <asp:ListItem Selected="True">Paperback</asp:ListItem>
+                            <asp:ListItem>Hardback</asp:ListItem>
+                            <asp:ListItem>Ebook</asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-12">
+                <asp:Label ForeColor="Red" ID="lbl_error" runat="server"></asp:Label>
             </div>
             <br />
             <div class="col-md-12">
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click"/>
                 &nbsp;
                 <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-success" OnClick="btnClear_Click" />
+            </div>
+        <div class="col-md-12">
+            <asp:Label style="color: green; font-weight: bold;" ID="lbl_result" runat="server"></asp:Label>
+            </div>
+            <br />
+            <br />
+        <div class="col-md-12">
+            <h4><a href="OptionsMenu.aspx" title="Home">Back to Options</a></h4>
             </div>
             <br />
     </div>

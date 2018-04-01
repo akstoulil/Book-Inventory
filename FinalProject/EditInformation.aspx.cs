@@ -21,41 +21,55 @@ namespace FinalProject
         protected void btnEditSubmit_Click(object sender, EventArgs e)
         {
 
-            double isbn = double.Parse(dropDownEditSearch.SelectedValue);
-            string title = textEditTitle.Text;
-            string lastname = textEditLastName.Text;
-            string firstname = textEditFirstName.Text;
-            double rating = double.Parse(DropDownQuestNum.SelectedValue);
-            string format = rblst_format.SelectedValue;
+            try
+            {
 
-            BookInventoryTableAdapters.BookTableAdapter tableAdapter = new BookInventoryTableAdapters.BookTableAdapter();
-            tableAdapter.UpdateBookTable(isbn, title, lastname, firstname, rating, format);
+                lbl_error.Text = "";
 
-            bool fiction = cbEditCategory.Items.FindByText("Fiction").Selected;
-            bool children = cbEditCategory.Items.FindByText("Children's").Selected;
-            bool foreign = cbEditCategory.Items.FindByText("Foreign").Selected;
-            bool romance = cbEditCategory.Items.FindByText("Romance").Selected;
-            bool suspense = cbEditCategory.Items.FindByText("Suspense").Selected;
-            bool nonfiction = cbEditCategory.Items.FindByText("Non-Fiction").Selected;
-            bool comedy = cbEditCategory.Items.FindByText("Comedy").Selected;
-            bool history = cbEditCategory.Items.FindByText("History").Selected;
-            bool sciFi = cbEditCategory.Items.FindByText("Sci-Fi").Selected;
-            bool textbook = cbEditCategory.Items.FindByText("Textbook").Selected;
-            bool autobiography = cbEditCategory.Items.FindByText("AutoBiography").Selected;
-            bool drama = cbEditCategory.Items.FindByText("Drama").Selected;
-            bool horror = cbEditCategory.Items.FindByText("Horror").Selected;
-            bool selfHelp = cbEditCategory.Items.FindByText("Self-Help").Selected;
-            bool thriller = cbEditCategory.Items.FindByText("Thriller").Selected;
-            bool biography = cbEditCategory.Items.FindByText("Biography").Selected;
-            bool fantasy = cbEditCategory.Items.FindByText("Fantasy").Selected;
-            bool religious = cbEditCategory.Items.FindByText("Religious").Selected;
+                double isbn = double.Parse(dropDownEditSearch.SelectedValue);
+                string title = textEditTitle.Text;
+                string lastname = textEditLastName.Text;
+                string firstname = textEditFirstName.Text;
+                double rating = double.Parse(DropDownQuestNum.SelectedValue);
+                string format = rblst_format.SelectedValue;
+                double newIsbn = double.Parse(textEditIsbn.Text);
 
-            tableAdapter.UpdateCategories(fiction, children, foreign, romance, suspense, nonfiction, comedy, history,
-                sciFi, textbook, autobiography, drama, horror, selfHelp, thriller, biography, fantasy, religious, isbn);
+                BookInventoryTableAdapters.BookTableAdapter tableAdapter = new BookInventoryTableAdapters.BookTableAdapter();
+                tableAdapter.UpdateBookTable(newIsbn, title, lastname, firstname, rating, format);
 
-            lbl_result.Text = "Record successfully updated for " + title;
+                bool fiction = cbEditCategory.Items.FindByText("Fiction").Selected;
+                bool children = cbEditCategory.Items.FindByText("Children's").Selected;
+                bool foreign = cbEditCategory.Items.FindByText("Foreign").Selected;
+                bool romance = cbEditCategory.Items.FindByText("Romance").Selected;
+                bool suspense = cbEditCategory.Items.FindByText("Suspense").Selected;
+                bool nonfiction = cbEditCategory.Items.FindByText("Non-Fiction").Selected;
+                bool comedy = cbEditCategory.Items.FindByText("Comedy").Selected;
+                bool history = cbEditCategory.Items.FindByText("History").Selected;
+                bool sciFi = cbEditCategory.Items.FindByText("Sci-Fi").Selected;
+                bool textbook = cbEditCategory.Items.FindByText("Textbook").Selected;
+                bool autobiography = cbEditCategory.Items.FindByText("AutoBiography").Selected;
+                bool drama = cbEditCategory.Items.FindByText("Drama").Selected;
+                bool horror = cbEditCategory.Items.FindByText("Horror").Selected;
+                bool selfHelp = cbEditCategory.Items.FindByText("Self-Help").Selected;
+                bool thriller = cbEditCategory.Items.FindByText("Thriller").Selected;
+                bool biography = cbEditCategory.Items.FindByText("Biography").Selected;
+                bool fantasy = cbEditCategory.Items.FindByText("Fantasy").Selected;
+                bool religious = cbEditCategory.Items.FindByText("Religious").Selected;
 
-            dropDownEditSearch.DataBind();
+                tableAdapter.UpdateCategories(fiction, children, foreign, romance, suspense, nonfiction, comedy, history,
+                    sciFi, textbook, autobiography, drama, horror, selfHelp, thriller, biography, fantasy, religious, isbn);
+
+                lbl_result.Text = "Record successfully updated for " + title;
+
+                dropDownEditSearch.DataBind();
+
+            }
+            catch
+            {
+
+                lbl_error.Text = "A database error has occurred.";
+
+            }
 
         }
 
@@ -63,6 +77,7 @@ namespace FinalProject
         {
 
             lbl_result.Text = "";
+            lbl_error.Text = "";
 
             double isbn = double.Parse(dropDownEditSearch.SelectedValue);
             double rating = 0;
@@ -143,7 +158,23 @@ namespace FinalProject
             rblst_format.SelectedIndex = 0;
 
             lbl_result.Text = "";
+            lbl_error.Text = "";
 
+        }
+
+        protected void textEditTitle_TextChanged(object sender, EventArgs e)
+        {
+            lbl_error.Text = "";
+        }
+
+        protected void textEditFirstName_TextChanged(object sender, EventArgs e)
+        {
+            lbl_error.Text = "";
+        }
+
+        protected void textEditLastName_TextChanged(object sender, EventArgs e)
+        {
+            lbl_error.Text = "";
         }
     }
 }

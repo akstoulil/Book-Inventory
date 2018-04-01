@@ -47,7 +47,7 @@
                                 ControlToValidate="textEditTitle" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
-                <asp:TextBox ID="textEditTitle" runat="server" CssClass="form-control"></asp:TextBox>            
+                <asp:TextBox ID="textEditTitle" runat="server" CssClass="form-control" OnTextChanged="textEditTitle_TextChanged"></asp:TextBox>            
             </div>
         </div>
         <br />
@@ -58,7 +58,7 @@
                                 ControlToValidate="textEditFirstName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
-                <asp:TextBox ID="textEditFirstName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="textEditFirstName" runat="server" CssClass="form-control" OnTextChanged="textEditFirstName_TextChanged"></asp:TextBox>
             </div>
         </div>
         <br />
@@ -69,7 +69,7 @@
                                 ControlToValidate="textEditLastName" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-12">
-                <asp:TextBox ID="textEditLastName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="textEditLastName" runat="server" CssClass="form-control" OnTextChanged="textEditLastName_TextChanged"></asp:TextBox>
             </div>
         </div>
         <br />
@@ -129,7 +129,7 @@
                                 ControlToValidate="textEditIsbn" Dispaly="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-md-12">
-                    <asp:TextBox ID="textEditIsbn" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="textEditIsbn" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -144,6 +144,11 @@
                 </div>
             </div>
         <br />
+
+        <div class="col-md-12">
+                <asp:Label ForeColor="Red" ID="lbl_error" runat="server"></asp:Label>
+            </div>
+            <br />
             <div class="col-md-12">
                 <asp:Button ID="btnEditSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnEditSubmit_Click"/>
                 <asp:Button ID="Button1" runat="server" Text="Clear" CssClass="btn btn-primary" style="background-color: red; margin-left: 2%;" OnClick="Button1_Click" />
