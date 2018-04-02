@@ -26,8 +26,22 @@
                         <asp:ListItem Value="ISBN"></asp:ListItem>
                         <asp:ListItem Value="Title"></asp:ListItem>    
                         <asp:ListItem Value="Author's Last Name"></asp:ListItem>    
-                    </asp:DropDownList>                                    
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IsbnTitleString %>" SelectCommand="SELECT [Isbn], [Title] FROM [Table]"></asp:SqlDataSource>
+                    </asp:DropDownList>                                                      
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IsbnTitleString %>" 
+                        SelectCommand="SELECT [Isbn], [Title] FROM [Table]" 
+                        DeleteCommand="DELETE FROM [Table] 
+                        WHERE [Isbn] = @original_Isbn
+                        AND [Title] = @original_Title
+                        AND [AuthorLName] = @original_AuthorLName
+                        AND [AuthorFName] = @original_AuthorFName
+                        AND [Category] = @original_Category">
+                    <DeleteParameters>
+                    <asp:Parameter Name="original_Isbn" Type="Double" />
+                    <asp:Parameter Name="original_Title" Type="String" />
+                    <asp:Parameter Name="original_AuthorLName" Type="String" />
+                    <asp:Parameter Name="original_AuthorFName" Type="String" />
+                    <asp:Parameter Name="original_Category" Type="String" />
+                    </DeleteParameters></asp:SqlDataSource>
                     <h3 style="font-weight: bold; width: 100%;">Please Enter Your Values Below:</h3>
                 </div>                
         </div>
@@ -60,7 +74,7 @@
         <br />
         <div class="col-md-12">
             <asp:Button ID="btnDelete" runat="server" Text="Delete Inventory" CssClass="btn btn-primary" OnClick="btnDelete_Click" />
-        </div>
+        </div>        
     </div>
     </form>
 </body>
