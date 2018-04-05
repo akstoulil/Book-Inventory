@@ -24,19 +24,30 @@
             <b><asp:Label ID="lblEditSearch" runat="server" Text="Search: "></asp:Label></b>
         </div>
         <div class="form-group">
-            <div class="col-md-2 col-sm-2 col-xs-12">
-                <asp:DropDownList ID="dropDownEditSearch" runat="server" CssClass="form-control">
-                    <asp:ListItem Value="ISBN"></asp:ListItem>
-                    <asp:ListItem Value="Title"></asp:ListItem>    
-                    <asp:ListItem Value="Author's Last Name"></asp:ListItem>    
-                </asp:DropDownList>                                    
-            </div>
-            <div class="col-md-10 col-md-10 col-xs-12">
-                <asp:TextBox ID="textEditSearch" runat="server" CssClass="form-control"></asp:TextBox>
-            </div>    
-            <br /> 
-            <br />   
-        </div> 
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <asp:DropDownList ID="dropDownEditSearch" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Isbn" OnSelectedIndexChanged="dropDownEditSearch_SelectedIndexChanged" Width="300px">
+                        <asp:ListItem Value="ISBN"></asp:ListItem>
+                        <asp:ListItem Value="Title"></asp:ListItem>    
+                        <asp:ListItem Value="Author's Last Name"></asp:ListItem>    
+                    </asp:DropDownList>                                                      
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IsbnTitleString %>" 
+                        SelectCommand="SELECT [Isbn], [Title] FROM [Table]" 
+                        DeleteCommand="DELETE FROM [Table] 
+                        WHERE [Isbn] = @original_Isbn
+                        AND [Title] = @original_Title
+                        AND [AuthorLName] = @original_AuthorLName
+                        AND [AuthorFName] = @original_AuthorFName
+                        AND [Category] = @original_Category">
+                    <DeleteParameters>
+                    <asp:Parameter Name="original_Isbn" Type="Double" />
+                    <asp:Parameter Name="original_Title" Type="String" />
+                    <asp:Parameter Name="original_AuthorLName" Type="String" />
+                    <asp:Parameter Name="original_AuthorFName" Type="String" />
+                    <asp:Parameter Name="original_Category" Type="String" />
+                    </DeleteParameters></asp:SqlDataSource>
+                    <h3 style="font-weight: bold; width: 100%;">Please Enter Your Values Below:</h3>
+                </div>                
+        </div>
         <div class="col-md-12">
             <b><asp:Label ID="lblTitleLabel" runat="server" Text="Title: "></asp:Label></b>
             <asp:Label ID="lblTitle" runat="server" Text=""></asp:Label>
@@ -65,6 +76,16 @@
         <div class="col-md-12">
             <asp:Button ID="btnDelete" runat="server" Text="Delete Inventory" CssClass="btn btn-primary" OnClick="btnDelete_Click" />
         </div>
+        <div class="col-md-12">
+            <asp:Label ID="lblResult" runat="server" ForeColor="Green" Text=""></asp:Label>
+        </div>
+        <div class="col-md-12">
+            <asp:Label ID="lblError" runat="server" ForeColor="Red" Text=""></asp:Label>
+        </div>
+        <div class="col-md-12">
+            <h4><a href="OptionsMenu.aspx" title="Home">Back to Options</a></h4>
+            </div>
+            <br />
     </div>
     </form>
 </body>
