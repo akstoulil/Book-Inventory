@@ -22,6 +22,7 @@ namespace FinalProject
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
+            //Try catch block to handle errors
             try
             {
 
@@ -29,6 +30,7 @@ namespace FinalProject
 
                 BookInventoryTableAdapters.BookTableAdapter tableAdapter = new BookInventoryTableAdapters.BookTableAdapter();
 
+                //Program gets the input from the user and stores it into the variables below
                 double Isbn;
                 double.TryParse(textIsbn.Text, out Isbn);
 
@@ -57,10 +59,12 @@ namespace FinalProject
                 bool fantasy = cbCategory.Items.FindByText("Fantasy").Selected;
                 bool religious = cbCategory.Items.FindByText("Religious").Selected;
 
+                //Sql statement to add a new item to the database
                 string bookSql = "INSERT INTO [Table] "
                     + "(Isbn, Title, AuthorLName, AuthorFName, Rating, Format) "
                     + "VALUES(@Isbn, @Title, @AuthorLName, @AuthorFName, @Rating, @Format)";
 
+                //Program adds a new item to the books table
                 using (SqlConnection con = new SqlConnection(GetConnectionString()))
                 {
                     using (SqlCommand cmd = new SqlCommand(bookSql, con))
@@ -76,10 +80,12 @@ namespace FinalProject
                     }
                 }
 
+                //Sql string to add a new item to the categories table
                 string categorySql = "INSERT INTO Categories "
                     + "(Isbn, Fiction, [Children's], [Foreign], Romance, Suspense, [Non-Fiction], Comedy, History, [Sci-Fi], Textbook, Autobiography, Drama, Horror, [Self-Help], Thriller, Biography, Fantasy, Religious) "
                     + "VALUES(@Isbn, @Fiction, @Childrens, @Foreign, @Romance, @Suspense, @NonFiction, @Comedy, @History, @SciFi, @Textbook, @Autobiography, @Drama, @Horror, @SelfHelp, @Thriller, @Biography, @Fantasy, @Religious)";
 
+                //Program adds it to the table
                 using (SqlConnection con = new SqlConnection(GetConnectionString()))
                 {
                     using (SqlCommand cmd = new SqlCommand(categorySql, con))
@@ -108,12 +114,14 @@ namespace FinalProject
                     }
                 }
 
+                //Display that the operation was successful
                 lbl_result.Text = Title + " successfully inserted!";
 
             }
             catch
             {
 
+                //Display that an error has occurred
                 lbl_result.Text = "";
                 lbl_error.Text = "A database error has occurred";
 
@@ -123,6 +131,8 @@ namespace FinalProject
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
+
+            //Program clears out the text
             cbCategory.ClearSelection();
             textTitle.Text = "";
             textFirstName.Text = "";
@@ -131,6 +141,7 @@ namespace FinalProject
             textIsbn.Text = "";
             lbl_error.Text = "";
             lbl_result.Text = "";
+
         }
 
         private static string GetConnectionString()

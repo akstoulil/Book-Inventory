@@ -11,6 +11,7 @@
     <link href="css/main.css" rel="stylesheet" /> 
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,13 +24,21 @@
             <%--<asp:Label ID="lblPrducts" runat="server" CssClass="col-md-3 control-label" Text="Products: "></asp:Label>--%>
             <div >
                 <br />
-                <asp:GridView ID="GridView1" runat="server" AllowPaging="False" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource1" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" >
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Title" DataSourceID="SqlDataSource1" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowDataBound="GridView1_RowDataBound1" >
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
+                        <asp:BoundField DataField="Isbn" HeaderText="Isbn" ReadOnly="True" SortExpression="Isbn" />
                         <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
                         <asp:BoundField DataField="AuthorFName" HeaderText="First Name" SortExpression="Title" />
                         <asp:BoundField DataField="AuthorLName" HeaderText="Last Name" SortExpression="Title" />
-                        <asp:BoundField DataField="Category" HeaderText="Category" SortExpression="Title" />
+                        <asp:TemplateField HeaderText="Category" SortExpression="Title">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Category") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="categorylbl" runat="server"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Rating" HeaderText="Rating" SortExpression="Title" />
                     </Columns>                    
                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />                    
@@ -39,9 +48,10 @@
                 <br />
             </div>
         </div>
+            <h4><a href="OptionsMenu.aspx" title="Home">Back to Options</a></h4>
         </div>
          </div>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IsbnTitleString %>" SelectCommand="SELECT [Title], [AuthorFName], [AuthorLName], [Category], [Rating] FROM [Table]">
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IsbnTitleString %>" SelectCommand="SELECT [Title], [AuthorFName], [AuthorLName], [Category], [Rating], [Isbn] FROM [Table]">
 </asp:SqlDataSource>        
     </form>
 </body>

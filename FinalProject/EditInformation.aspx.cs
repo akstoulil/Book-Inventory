@@ -21,11 +21,13 @@ namespace FinalProject
         protected void btnEditSubmit_Click(object sender, EventArgs e)
         {
 
+            //Try catch block to handle errors
             try
             {
 
                 lbl_error.Text = "";
 
+                //Program gets and stores the values entered by the user
                 double isbn = double.Parse(dropDownEditSearch.SelectedValue);
                 string title = textEditTitle.Text;
                 string lastname = textEditLastName.Text;
@@ -34,9 +36,11 @@ namespace FinalProject
                 string format = rblst_format.SelectedValue;
                 double newIsbn = double.Parse(textEditIsbn.Text);
 
+                //Program updates the book table below
                 BookInventoryTableAdapters.BookTableAdapter tableAdapter = new BookInventoryTableAdapters.BookTableAdapter();
                 tableAdapter.UpdateBookTable(newIsbn, title, lastname, firstname, rating, format);
 
+                //Program gets the selected categories
                 bool fiction = cbEditCategory.Items.FindByText("Fiction").Selected;
                 bool children = cbEditCategory.Items.FindByText("Children's").Selected;
                 bool foreign = cbEditCategory.Items.FindByText("Foreign").Selected;
@@ -56,9 +60,11 @@ namespace FinalProject
                 bool fantasy = cbEditCategory.Items.FindByText("Fantasy").Selected;
                 bool religious = cbEditCategory.Items.FindByText("Religious").Selected;
 
+                //Program updates the categories
                 tableAdapter.UpdateCategories(fiction, children, foreign, romance, suspense, nonfiction, comedy, history,
                     sciFi, textbook, autobiography, drama, horror, selfHelp, thriller, biography, fantasy, religious, isbn);
 
+                //Program displays that the operation was successful
                 lbl_result.Text = "Record successfully updated for " + title;
 
                 dropDownEditSearch.DataBind();
@@ -67,6 +73,7 @@ namespace FinalProject
             catch
             {
 
+                //Program displays that an error has occurred
                 lbl_error.Text = "A database error has occurred.";
 
             }
@@ -76,6 +83,7 @@ namespace FinalProject
         protected void dropDownEditSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            //Program clears out the current text
             lbl_result.Text = "";
             lbl_error.Text = "";
 
@@ -86,9 +94,11 @@ namespace FinalProject
             BookInventoryTableAdapters.BookTableAdapter tableAdapter = new BookInventoryTableAdapters.BookTableAdapter();
             BookInventory.BookInventoryTableDataTable bookInventory = tableAdapter.GetDataByIsbn(isbn);
 
+            //Foreach loop goes through the rows
             foreach(BookInventory.BookInventoryTableRow br in bookInventory)
             {
 
+                //Program updates each item with the current information from the database
                 textEditIsbn.Text = br.Isbn.ToString();
                 textEditFirstName.Text = br.AuthorFName.ToString();
                 textEditLastName.Text = br.AuthorLName.ToString();
@@ -130,6 +140,7 @@ namespace FinalProject
         protected void Button1_Click(object sender, EventArgs e)
         {
 
+            //Program resets the form
             textEditIsbn.Text = "";
             textEditFirstName.Text = "";
             textEditLastName.Text = "";

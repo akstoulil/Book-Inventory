@@ -45,6 +45,7 @@
                     <asp:Parameter Name="original_AuthorFName" Type="String" />
                     <asp:Parameter Name="original_Category" Type="String" />
                     </DeleteParameters></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:IsbnTitleString %>" SelectCommand="SELECT * FROM [Categories]"></asp:SqlDataSource>
                     <h3 style="font-weight: bold; width: 100%;">Please Enter Your Values Below:</h3>
                 </div>                
         </div>
